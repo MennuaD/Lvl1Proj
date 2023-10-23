@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "Stylesheet" href = styling.css>
+    <title>Document</title>
+    <script>
+    function initialize()
+        {
+            //The HTML object for the display.
+            numberOutput = document.getElementById("numberout");
+            number2Output = document.getElementById("number2out");
+            
+            //The actual number that will change during the course of the program.
+            num = 0;
+            num2 = 0;
+            num3 = 0;
+            box1.innerHTML == null;
+            box2.innerHTML == null;
+            box3.innerHTML == null;
+            
+            display();
+        }
+
+    function randomize(){
+
+        num = parseInt( Math.random() * 3) + 1 ;
+        num2 = parseInt( Math.random() * 3) + 1 ;
+    
+        display()
+
+    }
+    function add1(){
+        if (box1.innerHTML = null){
+            box1.innerHTML = 1;
+        }else if(box2.innerHTML = null){
+            box2.innerHTML = 1;
+        }else if(box3.innerHTML = null){
+            box3.innerHTML = 1;
+        }
+    }
+    function add2(){
+        box1.innerHTML += box1.innerHTML;
+    }
+    function reset(){
+        box1.innerHTML = null;
+        box2.innerHTML = null;
+        box3.innerHTML = null;
+    }
+    function display()
+			{
+	
+                logout.innerHTML += "Code: " + num + num2 ;
+			}
+        </script>
+</head>
+<body onload = "initialize();">
+		<h1 >Code Breaker</h1>
+        <h2 id = "med">Break the "vault" in 7 attempts or less or else you will be caught by your persuers. (The code is randomized between one and three.)</h2>
+        <h2 id = "med">Attempts Left = 7</h2>
+        <div id = "grid2">
+            <div class = "cell" >
+                <h3></h3> 
+                            
+             </div>
+            <div class = "cell" id = "black">
+               <div id = "box1"></div> 
+                           
+            </div>
+            <div class = "cell" id = "black">
+                <div id = "box2"></div> 
+                            
+             </div>
+             <div class = "cell" id = "black">
+                <div id = "box3"></div> 
+                            
+             </div>
+             <div class = "cell">
+                <h3></h3> 
+                            
+             </div>
+        </div>
+        <p></p>
+		<button onclick = "reset();">Reset</button> 
+        <button onclick = "add1();">1</button>
+        <button onclick = "add2();">2</button>
+        <button onclick = "add3();">3</button>
+        <div id = "grid">
+            <div class = "cell" id log>
+               <h3>Log</h3> 
+               <div id = "logout"></div>            
+            </div>
+        </div>
+	</body>
+</html>
