@@ -70,6 +70,6 @@ body {
     grid-template-rows: 1fr;
     
 }
-#med {font-size: 1.4rem;}
+.med {font-size: 1.4rem;}
 
 #black {background-color: #ffffff;}
