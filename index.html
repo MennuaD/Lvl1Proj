@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "Stylesheet" href = styling.css>
+    <title>Document</title>
+    <script>
+    function initialize()
+        {
+           // if(document.body.hasAttribute("h6") == true){
+            //    document.body.removeChild("h6")
+            //}
+            while(document.querySelector('h6') != null){
+                removeThing = document.querySelector('h6');
+                removeThing.remove();
+            }
+            //The HTML object for the display.
+            numberOutput = document.getElementById("numberout");
+            number2Output = document.getElementById("number2out");
+            
+            //The actual number that will change during the course of the program.
+            num = 0;
+            box1.innerHTML = null;
+            box2.innerHTML = null;
+            box3.innerHTML = null;
+            num1 = parseInt( Math.random() * 3) + 1 ;
+            num2 = parseInt( Math.random() * 3) + 1 ;
+            num3 = parseInt( Math.random() * 3) + 1 ;
+            codenum = num1*100 + num2*10 + num3;
+            attempts = 7;
+            congrats.innerHTML="Attempts Left = " + attempts;
+            
+            
+        }
+
+    function randomize(){
+
+        num = parseInt( Math.random() * 3) + 1 ;
+        num2 = parseInt( Math.random() * 3) + 1 ;
+    
+        display()
+
+    }
+    function add1(){
+        if (box1.innerHTML != 2 && box1.innerHTML != 3 && box1.innerHTML != 1){
+            box1.innerHTML = 1;
+            
+        }else if(box2.innerHTML != 2 && box2.innerHTML != 3 && box2.innerHTML != 1){
+            box2.innerHTML = 1;
+            
+        }else if(box3.innerHTML != 2 && box3.innerHTML != 3 && box3.innerHTML != 1){
+            box3.innerHTML = 1;
+            
+        }
+    }
+    function add2(){
+        if (box1.innerHTML != 2 && box1.innerHTML != 3 && box1.innerHTML != 1){
+            box1.innerHTML = 2;
+            
+        }else if(box2.innerHTML != 2 && box2.innerHTML != 3 && box2.innerHTML != 1){
+            box2.innerHTML = 2;
+            
+        }else if(box3.innerHTML != 2 && box3.innerHTML != 3 && box3.innerHTML != 1){
+            box3.innerHTML = 2;
+ 
+        }
+    }
+    function add3(){
+        if (box1.innerHTML != 2 && box1.innerHTML != 3 && box1.innerHTML != 1){
+            box1.innerHTML = 3;
+            
+        }else if(box2.innerHTML != 2 && box2.innerHTML != 3 && box2.innerHTML != 1){
+            box2.innerHTML = 3;
+ 
+        }else if(box3.innerHTML != 2 && box3.innerHTML != 3 && box3.innerHTML != 1){
+            box3.innerHTML = 3;
+
+        }
+    }
+    function reset(){
+        box1.innerHTML = null;
+        box2.innerHTML = null;
+        box3.innerHTML = null;
+        
+    }
+    function checkCode(){
+        if(num1 == box1.innerHTML && num2 == box2.innerHTML && num3 == box3.innerHTML){
+            congrats.innerHTML = "Congrats! You have cracked the vault code!";
+        }else if(attempts > 0){
+            log();
+            reset();
+            num = 0;
+            attempts += -1;
+            congrats.innerHTML="Attempts Left = " + attempts;
+        }else{
+            congrats.innerHTML = "YOU HAVE FAILED!!!"
+        }
+    }
+    
+    function timer(){
+        try {
+            
+            wait(2 * 1000);
+            timeEnd();
+            
+        } catch (e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    function timeEnd(){
+        notify();
+
+    }
+
+    function log()
+			{
+                
+                lognum = box1.innerHTML*100 + box2.innerHTML*10 + box3.innerHTML*1;
+                if (lognum > codenum){
+                    //logout.innerHTML += "Attempt #" + attempts + ": " + lognum + "-";
+                   // logout.innerHTML += "Too high ";
+                    newline = document.createElement("h6");
+                    newline.textContent = "Attempt #" + attempts + ": " + lognum + "-" + "Too high";
+                    document.body.appendChild(newline);
+
+                }else{
+                   // logout.innerHTML += "Attempt #" + attempts + ": " + lognum + "-";
+                    //logout.innerHTML += "Too low ";
+                    newline = document.createElement("h6");
+                    newline.textContent = "Attempt #" + attempts + ": " + lognum + "-" + "Too low";
+                    document.body.appendChild(newline);
+
+                }
+			}
+        </script>
+</head>
+<body onload = "initialize();">
+		<h1 >Code Breaker</h1>
+        <h2 class = "med">Break the "vault" in 7 attempts or less or else you will be caught by your persuers. (The code is randomized between one and three.)</h2>
+        <h2 class = "med" id = "congrats">Attempts Left = 7</h2>
+        <div id = "grid2">
+            <div class = "cell" >
+                <h3></h3> 
+                            
+             </div>
+            <div class = "cell" id = "black">
+               <div id = "box1"></div> 
+                           
+            </div>
+            <div class = "cell" id = "black">
+                <div id = "box2"></div> 
+                            
+             </div>
+             <div class = "cell" id = "black">
+                <div id = "box3"></div> 
+                            
+             </div>
+             <div class = "cell">
+                <h3></h3> 
+                            
+             </div>
+        </div>
+        <p></p>
+		<button onclick = "reset();">Reset</button> 
+        <button onclick = "add1();">1</button>
+        <button onclick = "add2();">2</button>
+        <button onclick = "add3();">3</button>
+        <button onclick = "checkCode();">Try</button>
+        <button onclick = "initialize();">Reset Game</button>
+        <div id = "grid">
+            <div class = "cell" id log>
+               <h3>Log</h3> 
+                           
+            </div>
+        </div>
+	</body>
+</html>
